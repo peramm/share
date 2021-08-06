@@ -19,10 +19,11 @@ exportList= pd.DataFrame(columns=['Stock', "Close", "Start", "Performance %"])
 
 for stock in stocks:
     ndf = pd.DataFrame()
-    ndf.dropna()
     for column in columns:
         ndf[column] = df[column][stock]
     ndf = ndf.loc[startdate:]
+    ndf = ndf.dropna()
+
     end = round(ndf.iloc[-1, ndf.columns.get_loc("Adj Close")], 2)
     start = round(ndf.iloc[0, ndf.columns.get_loc("Adj Close")], 2)
 
