@@ -6,8 +6,6 @@ import os
 import datetime
 import sys
 
-# print("Creating personal ticker file from: index tech div and nondiv")
-# os.system("cat index.txt tech.txt div.txt nondiv.txt > personal")
 yf.pdr_override()
 os.system("date")
 
@@ -22,7 +20,6 @@ def df_from_file (fname):
         return pd.DataFrame()
 
 def refresh_data(filename):
-    # Get the current SP components, and get a tickers list
 
     df = df_from_file(filename)
     if len(df.index) == 0:
@@ -37,7 +34,7 @@ def refresh_data(filename):
     #Download historical data to a multi-index DataFrame
     try:
         ndf = yf.download(stocks, start=startdate, end=None, as_panel=False)
-        data = df[:-filterrows] #remove last row
+        data = df[:-filterrows] #remove last rows
         data = data.append(ndf) # Add new rows
         filename = filename+'.pkl'
         data.to_pickle(filename)
