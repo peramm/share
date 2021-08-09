@@ -3,16 +3,14 @@ import pandas as pd
 from datetime import datetime, timedelta
 from tqdm import tqdm
 
-# Read a csv file into a pandas dataframe
-#df = pd.read_csv('LEN.csv', parse_dates=True, index_col='Date')
-# sma = btalib.atr(df, period=4)
-# print(sma.df)
+# This study will give you tickers that were up 12 of the last 15 days.
+
 def isNaN(num):
     return num != num
 
 def ants(fname):
     
-    filename = "../pickle/{}.pkl".format(fname)
+    filename = "{}.pkl".format(fname)
     try:
         df = pd.read_pickle(filename)
     except Exception:
